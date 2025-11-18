@@ -1,4 +1,4 @@
-```markdown
+
 # Weakest Precondition Calculator (WPF)
 
 ## Описание проекта
