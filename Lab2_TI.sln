@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab2_TI", "Lab2_TI\Lab2_TI.csproj", "{D6A40FA0-16CF-45AA-A643-BC7B2C391107}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPCalculator.Tests", "WPCalculator.Tests\WPCalculator.Tests.csproj", "{06904E27-922E-4E66-AB1E-F2EAD4E50630}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D6A40FA0-16CF-45AA-A643-BC7B2C391107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6A40FA0-16CF-45AA-A643-BC7B2C391107}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6A40FA0-16CF-45AA-A643-BC7B2C391107}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6A40FA0-16CF-45AA-A643-BC7B2C391107}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06904E27-922E-4E66-AB1E-F2EAD4E50630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06904E27-922E-4E66-AB1E-F2EAD4E50630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06904E27-922E-4E66-AB1E-F2EAD4E50630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06904E27-922E-4E66-AB1E-F2EAD4E50630}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4006A347-5144-4AD9-8080-085F7CB411F5}
+	EndGlobalSection
+EndGlobal

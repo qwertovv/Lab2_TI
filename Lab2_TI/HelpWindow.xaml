@@ -1,0 +1,93 @@
+﻿<Window x:Class="WPCalculator.HelpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Справка - Калькулятор Слабейшего Предусловия" 
+        Height="500" Width="600"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Как пользоваться приложением" 
+                          FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+
+                <TextBlock Text="1. Ввод данных" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <Run FontWeight="Bold">• Цель (Постусловие)</Run> - введите условие, которое должно выполняться после выполнения программы (например: max>100, y==x-9)
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Описание</Run> - человеко-читаемое описание постусловия
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Фрагмент кода</Run> - введите программу, состоящую из присваиваний и условных операторов
+                </TextBlock>
+
+                <TextBlock Text="2. Синтаксис кода" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    <Run FontWeight="Bold">• Присваивание:</Run> переменная := выражение
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Условный оператор:</Run> if (условие) оператор; else оператор;
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Поддерживаемые операции:</Run> +, -, *, /, abs(), sqrt()
+                </TextBlock>
+
+                <TextBlock Text="3. Примеры присваиваний" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    • x := 5;
+                    <LineBreak/>
+                    • y := x + 10;
+                    <LineBreak/>
+                    • result := (a + b) / 2;
+                    <LineBreak/>
+                    • root := sqrt(D);
+                </TextBlock>
+
+                <TextBlock Text="4. Примеры условных операторов" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    • if (x >= y) max := x; else max := y;
+                    <LineBreak/>
+                    • if (D >= 0) root := sqrt(D); else root := -1;
+                </TextBlock>
+
+                <TextBlock Text="5. Готовые примеры" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    Используйте кнопки с готовыми примерами для быстрого ознакомления с работой приложения:
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Пример: Максимум</Run> - нахождение максимума двух чисел
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Пример: Квадратное уравнение</Run> - вычисление корня квадратного уравнения
+                    <LineBreak/>
+                    <Run FontWeight="Bold">• Пример: Последовательность</Run> - последовательность присваиваний
+                </TextBlock>
+
+                <TextBlock Text="6. Расчет и результаты" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap" Margin="0,0,0,10">
+                    • Нажмите <Run FontWeight="Bold">«Рассчитать WP»</Run> для вычисления слабейшего предусловия
+                    <LineBreak/>
+                    • В разделе <Run FontWeight="Bold">«Пошаговая трассировка»</Run> отображается процесс расчета
+                    <LineBreak/>
+                    • В разделе <Run FontWeight="Bold">«Результат»</Run> показывается итоговое предусловие
+                    <LineBreak/>
+                    • Кнопка <Run FontWeight="Bold">«Показать триаду Хоара»</Run> отображает триаду {Pre} P {Post}
+                </TextBlock>
+
+                <TextBlock Text="7. Особенности расчета" FontWeight="Bold" Margin="0,10,0,5"/>
+                <TextBlock TextWrapping="Wrap">
+                    • При наличии деления автоматически добавляется условие «знаменатель ≠ 0»
+                    <LineBreak/>
+                    • При использовании sqrt() добавляется условие «выражение под корнем ≥ 0»
+                    <LineBreak/>
+                    • Расчет идет от конца программы к началу (обратный ход)
+                    <LineBreak/>
+                    • Для условных операторов используется дизъюнкция условий из обеих веток
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+
+        <Button Grid.Row="1" Content="Закрыть" Click="BtnClose_Click" 
+                Width="80" Height="30" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+    </Grid>
+</Window>
