@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 namespace WPCalculator
 {
@@ -217,5 +218,6 @@ y := x + 1;";
 
             return string.Join(" && ", conditions);
         }
+        
     }
 }

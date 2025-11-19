@@ -88,7 +88,22 @@ b := a * 2;";
             Assert.Throws<System.ArgumentException>(() =>
                 calculator.CalculateWP(code, postCondition));
         }
+        [Fact]
+        public void TestAbsFunction()
+        {
+            // Arrange
+            var calculator = new WeakestPreconditionCalculator();
+            string code = "result := abs(x);";
+            string postCondition = "result >= 0";
 
-       
+            // Act
+            var result = calculator.CalculateWP(code, postCondition);
+
+            // Assert
+            Assert.Contains("abs(x)", result.FinalPrecondition);
+            Assert.DoesNotContain("знаменатель", result.FinalPrecondition);
+            Assert.DoesNotContain("выражение_под_корнем", result.FinalPrecondition);
+        }
+
     }
 }
