@@ -15,7 +15,10 @@
                 </Grid.RowDefinitions>
 
                 <!-- Секция постусловия -->
-                <GroupBox Grid.Row="0" Header="Цель (Постусловие)" Margin="0,0,0,5">
+                <GroupBox Grid.Row="0" Margin="0,0,0,5">
+                    <GroupBox.Header>
+                        <TextBlock Text="Цель (Постусловие)" FontWeight="Bold"/>
+                    </GroupBox.Header>
                     <StackPanel Orientation="Horizontal">
                         <TextBox Name="txtPostCondition" Width="200" Margin="5" 
                                 ToolTip="Введите постусловие (например: max>100, y==x-9)"/>
@@ -25,17 +28,22 @@
                 </GroupBox>
 
                 <!-- Секция кода -->
-                <GroupBox Grid.Row="1" Header="Фрагмент кода" Margin="0,0,0,5">
+                <GroupBox Grid.Row="1" Margin="0,0,0,5">
+                    <GroupBox.Header>
+                        <TextBlock Text="Фрагмент кода" FontWeight="Bold"/>
+                    </GroupBox.Header>
                     <TextBox Name="txtCode" Height="100" Margin="5" 
                             AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
                             TextWrapping="Wrap"
-                            ToolTip="Введите код программы (присваивания, if-else)"/>
+                            ToolTip="Введите программу (присваивания, if-else)"/>
                 </GroupBox>
 
                 <!-- Кнопки -->
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Name="btnCalculate" Content="Рассчитать WP" Click="BtnCalculate_Click" 
                            Margin="5" Padding="10,5"/>
+                    <Button Name="btnReset" Content="Очистить" Click="BtnReset_Click" 
+                           Margin="5" Padding="10,5" Background="#FFF0F0F0"/>
                     <Button Name="btnPreset1" Content="Пример: Максимум" Click="BtnPreset1_Click" 
                            Margin="5" Padding="10,5"/>
                     <Button Name="btnPreset2" Content="Пример: Квадратное уравнение" Click="BtnPreset2_Click" 
@@ -45,14 +53,20 @@
                 </StackPanel>
 
                 <!-- Секция трассировки -->
-                <GroupBox Grid.Row="3" Header="Пошаговая трассировка" Margin="0,5">
+                <GroupBox Grid.Row="3" Margin="0,5">
+                    <GroupBox.Header>
+                        <TextBlock Text="Пошаговая трассировка" FontWeight="Bold"/>
+                    </GroupBox.Header>
                     <TextBox Name="txtTrace" Height="150" Margin="5" 
                             IsReadOnly="True" VerticalScrollBarVisibility="Auto"
                             TextWrapping="Wrap"/>
                 </GroupBox>
 
                 <!-- Секция результатов -->
-                <GroupBox Grid.Row="4" Header="Результат" Margin="0,5">
+                <GroupBox Grid.Row="4" Margin="0,5">
+                    <GroupBox.Header>
+                        <TextBlock Text="Результат" FontWeight="Bold"/>
+                    </GroupBox.Header>
                     <StackPanel>
                         <TextBlock Name="txtWPResult" Margin="5" TextWrapping="Wrap"/>
                         <TextBlock Name="txtWPDescription" Margin="5" FontStyle="Italic"/>
@@ -64,19 +78,25 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <!-- Кнопка триады Хоара -->
                     <Button Grid.Column="0" Name="btnShowTriad" Content="Показать триаду Хоара" 
                            Click="BtnShowTriad_Click" Margin="5" Padding="10,5" HorizontalAlignment="Left"/>
 
+                    <!-- Кнопка экспорта -->
+                    <Button Grid.Column="1" Name="btnExport" Content="📄" 
+                           Click="BtnExport_Click" Margin="5" Padding="10,5" 
+                           Width="30" Height="30" FontSize="12"
+                           ToolTip="Экспорт результатов в файл"/>
+
                     <!-- Кнопка справки -->
                     <Button Grid.Column="2" Name="btnHelp" Content="?" 
-       Click="BtnHelp_Click" Margin="5" Padding="10,5" 
-       Width="30" Height="30" FontWeight="Bold" FontSize="14"
-       Foreground="Blue"
-       ToolTip="Показать справку по использованию приложения"/>
-
+                           Click="BtnHelp_Click" Margin="5" Padding="10,5" 
+                           Width="30" Height="30" FontWeight="Bold" FontSize="14"
+                           Foreground="Blue"
+                           ToolTip="Показать справку по использованию приложения"/>
                 </Grid>
             </Grid>
         </TabItem>

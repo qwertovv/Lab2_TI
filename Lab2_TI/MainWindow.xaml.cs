@@ -50,7 +50,83 @@ namespace WPCalculator
             txtWPResult.Text = $"Слабейшее предусловие: {result.FinalPrecondition}";
             txtWPDescription.Text = result.FinalDescription;
         }
+        private void BtnReset_Click(object sender, RoutedEventArgs e)
+        {
+            // Очищаем все поля ввода и вывода
+            txtPostCondition.Text = "";
+            txtPostDescription.Text = "";
+            txtCode.Text = "";
+            txtTrace.Text = "";
+            txtWPResult.Text = "";
+            txtWPDescription.Text = "";
 
+            MessageBox.Show("Все поля очищены", "Сброс формы",
+                           MessageBoxButton.OK, MessageBoxImage.Information);
+        }
+        private void BtnExport_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtWPResult.Text))
+                {
+                    MessageBox.Show("Сначала рассчитайте слабейшее предусловие", "Информация");
+                    return;
+                }
+
+                var saveDialog = new Microsoft.Win32.SaveFileDialog
+                {
+                    Filter = "Текстовые файлы (*.txt)|*.txt|Все файлы (*.*)|*.*",
+                    DefaultExt = ".txt",
+                    FileName = "WP_Result_" + DateTime.Now.ToString("yyyyMMdd_HHmmss")
+                };
+
+                if (saveDialog.ShowDialog() == true)
+                {
+                    string exportContent = GenerateExportContent();
+                    System.IO.File.WriteAllText(saveDialog.FileName, exportContent, Encoding.UTF8);
+                    MessageBox.Show($"Результаты успешно экспортированы в файл:\n{saveDialog.FileName}", "Экспорт завершен");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при экспорте: {ex.Message}", "Ошибка");
+            }
+        }
+
+        private string GenerateExportContent()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("=== РЕЗУЛЬТАТЫ РАСЧЕТА СЛАБЕЙШЕГО ПРЕДУСЛОВИЯ ===");
+            sb.AppendLine($"Дата: {DateTime.Now:dd.MM.yyyy HH:mm:ss}");
+            sb.AppendLine();
+
+            sb.AppendLine("=== ИСХОДНЫЕ ДАННЫЕ ===");
+            sb.AppendLine($"Постусловие: {txtPostCondition.Text}");
+            sb.AppendLine($"Описание: {txtPostDescription.Text}");
+            sb.AppendLine();
+            sb.AppendLine("=== ПРОГРАММА ===");
+            sb.AppendLine(txtCode.Text);
+            sb.AppendLine();
+
+            sb.AppendLine("=== РЕЗУЛЬТАТЫ ===");
+            sb.AppendLine(txtWPResult.Text);
+            sb.AppendLine($"Описание: {txtWPDescription.Text}");
+            sb.AppendLine();
+
+            sb.AppendLine("=== ПОШАГОВАЯ ТРАССИРОВКА ===");
+            sb.AppendLine(txtTrace.Text);
+            sb.AppendLine();
+
+            sb.AppendLine("=== ТРИАДА ХОАРА ===");
+            string pre = txtWPResult.Text.Replace("Слабейшее предусловие: ", "");
+            string post = txtPostDescription.Text;
+            string code = txtCode.Text;
+            sb.AppendLine($"{{ {pre} }}");
+            sb.AppendLine(code);
+            sb.AppendLine($"{{ {post} }}");
+
+            return sb.ToString();
+        }
         private void BtnShowTriad_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(txtWPResult.Text) && !string.IsNullOrEmpty(txtPostDescription.Text))
